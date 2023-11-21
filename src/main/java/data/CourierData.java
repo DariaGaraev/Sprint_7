@@ -11,9 +11,6 @@ public class CourierData {
         this.firstName = firstName;
     }
 
-    public CourierData() {
-
-    }
     public String getLogin() {
         return login;
     }
