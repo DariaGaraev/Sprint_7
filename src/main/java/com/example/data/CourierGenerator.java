@@ -1,4 +1,4 @@
-package data;
+package com.example.data;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

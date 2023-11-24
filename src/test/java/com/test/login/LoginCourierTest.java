@@ -1,9 +1,8 @@
-package login_test;
-
-import client.CourierClient;
-import data.CourierCredentials;
-import data.CourierData;
-import data.CourierGenerator;
+package com.test.login;
+import com.example.client.*;
+import com.example.data.CourierCredentials;
+import com.example.data.CourierData;
+import com.example.data.CourierGenerator;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;

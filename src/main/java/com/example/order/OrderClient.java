@@ -1,6 +1,6 @@
-package order;
+package com.example.order;
 
-import data.OrderData;
+import com.example.data.OrderData;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 

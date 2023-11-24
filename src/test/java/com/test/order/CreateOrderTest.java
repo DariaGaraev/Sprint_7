@@ -1,10 +1,10 @@
-package order_test;
+package com.test.order;
 
-import data.OrderData;
+import com.example.data.OrderData;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import order.OrderClient;
+import com.example.order.OrderClient;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,16 +1,14 @@
-package data;
-public class CourierCredentials {
+package com.example.data;
 
+public class CourierData {
     private String login;
     private String password;
+    private String firstName;
 
-    public CourierCredentials(String login, String password) {
+    public CourierData(String login, String password, String firstName) {
         this.login = login;
         this.password = password;
-    }
-
-    public static CourierCredentials from (CourierData courier) {
-        return new CourierCredentials(courier.getLogin(), courier.getPassword());
+        this.firstName = firstName;
     }
 
     public String getLogin() {
@@ -29,5 +27,11 @@ public class CourierCredentials {
         this.password = password;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 }

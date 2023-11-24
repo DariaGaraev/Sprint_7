@@ -1,10 +1,10 @@
-package courier_test;
+package com.test.courier;
 
-import client.CourierClient;
+import com.example.client.*;
 
-import data.CourierCredentials;
-import data.CourierData;
-import data.CourierGenerator;
+import com.example.data.CourierCredentials;
+import com.example.data.CourierData;
+import com.example.data.CourierGenerator;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
@@ -18,17 +18,17 @@ import static org.hamcrest.CoreMatchers.*;
 
 
 public class CreateCourierTest {
-    CourierClient courierClient;
-    CourierData courier;
-     int courierId;
 
 
+    private CourierClient courierClient;
+    private CourierData courier;
+    int courierId;
     @Before
     @Step("Создание тестовых данных курьера")
     public void setUp() {
         courierClient = new CourierClient();
         courier = CourierGenerator.getRandomCourier();
-      }
+    }
     @After
     @Step("Удаление тестовых данных курьера")
     public void cleanUp(){
@@ -52,8 +52,8 @@ public class CreateCourierTest {
     public void impossibleCrteationTheSameCourier() {
         courierClient.createCourier(courier);
         ValidatableResponse response = courierClient.createCourier(courier);
-        courierId = courierClient.loginCourier(CourierCredentials.from(courier)).extract().jsonPath().getInt("id");
         response.assertThat().body("message", equalTo("Этот логин уже используется. Попробуйте другой.")).and().statusCode(SC_CONFLICT);
+        courierId = courierClient.loginCourier(CourierCredentials.from(courier)).extract().jsonPath().getInt("id");
     }
     @Test
     @DisplayName("Создание курьера при пустом поле логина")

@@ -1,4 +1,4 @@
-package order;
+package com.example.order;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;

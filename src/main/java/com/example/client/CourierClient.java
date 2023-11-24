@@ -1,7 +1,7 @@
-package client;
+package com.example.client;
 
-import data.CourierCredentials;
-import data.CourierData;
+import com.example.data.CourierCredentials;
+import com.example.data.CourierData;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 import static io.restassured.RestAssured.given;
