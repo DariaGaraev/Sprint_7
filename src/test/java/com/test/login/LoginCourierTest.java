@@ -54,7 +54,9 @@ public class LoginCourierTest {
     public void courierLoginWithOutLogin(){
         courierCredentials.setLogin(null);
         ValidatableResponse response = courierClient.loginCourier(courierCredentials);
-        response.assertThat().body("message", equalTo("Недостаточно данных для входа")).and().statusCode(SC_BAD_REQUEST);
+        response.assertThat()
+                .statusCode(SC_BAD_REQUEST)
+                .body("message", equalTo("Недостаточно данных для входа"));
     }
 
     @Test
@@ -63,7 +65,9 @@ public class LoginCourierTest {
     public void courierLoginWithOutPassword(){
         courierCredentials.setPassword("");
         ValidatableResponse response = courierClient.loginCourier(courierCredentials);
-        response.assertThat().body("message", equalTo("Недостаточно данных для входа")).and().statusCode(SC_BAD_REQUEST);
+        response.assertThat()
+                .statusCode(SC_BAD_REQUEST)
+                .body("message", equalTo("Недостаточно данных для входа"));
     }
 
     @Test
@@ -73,7 +77,9 @@ public class LoginCourierTest {
         courierCredentials.setLogin(null);
         courierCredentials.setPassword("");
         ValidatableResponse response = courierClient.loginCourier(courierCredentials);
-        response.assertThat().body("message", equalTo("Недостаточно данных для входа")).and().statusCode(SC_BAD_REQUEST);
+        response.assertThat()
+                .statusCode(SC_BAD_REQUEST)
+                .body("message", equalTo("Недостаточно данных для входа"));
     }
     @Test
     @DisplayName("Логин курьера с несуществующими логином и паролем")
@@ -82,6 +88,9 @@ public class LoginCourierTest {
         courierCredentials.setLogin("BlaBlaLogin123123");
         courierCredentials.setPassword("BlaBlaLogin123123");
         ValidatableResponse response = courierClient.loginCourier(courierCredentials);
-        response.assertThat().body("message", equalTo("Учетная запись не найдена")).and().statusCode(SC_NOT_FOUND);
+        response.assertThat()
+                .statusCode(SC_NOT_FOUND)
+                .body("message", equalTo("Учетная запись не найдена"));
+
     }
 }

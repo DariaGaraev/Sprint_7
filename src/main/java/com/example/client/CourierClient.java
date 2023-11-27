@@ -10,7 +10,7 @@ public class CourierClient extends RestClient{
     private static final String COURIER_PATH = "/api/v1/courier";
     private static final String LOGIN_PATH = "/api/v1/courier/login";
     public static String COURIER_DELETE = "/api/v1/courier/:id";
-    @Step("Создание нового курьера")
+    @Step("Создание нового курьера:")
     public ValidatableResponse createCourier(CourierData courier){
         return given()
                 .spec(requestSpecification())

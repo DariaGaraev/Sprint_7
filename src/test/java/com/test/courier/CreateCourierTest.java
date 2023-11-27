@@ -52,7 +52,9 @@ public class CreateCourierTest {
     public void impossibleCrteationTheSameCourier() {
         courierClient.createCourier(courier);
         ValidatableResponse response = courierClient.createCourier(courier);
-        response.assertThat().body("message", equalTo("Этот логин уже используется. Попробуйте другой.")).and().statusCode(SC_CONFLICT);
+        response.assertThat()
+                .statusCode(SC_CONFLICT)
+                .body("message", equalTo("Этот логин уже используется. Попробуйте другой."));
         courierId = courierClient.loginCourier(CourierCredentials.from(courier)).extract().jsonPath().getInt("id");
     }
     @Test
@@ -61,7 +63,9 @@ public class CreateCourierTest {
     public void courierCrteationWithoutLogin(){
         courier.setLogin(null);
         ValidatableResponse response = courierClient.createCourier(courier);
-        response.assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи")).and().statusCode(SC_BAD_REQUEST);
+        response.assertThat()
+                .statusCode(SC_BAD_REQUEST)
+                .body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
     @Test
     @DisplayName("Создание курьера при пустом поле пароля")
@@ -69,7 +73,9 @@ public class CreateCourierTest {
     public void courierCrteationWithoutPassword(){
         courier.setPassword(null);
         ValidatableResponse response = courierClient.createCourier(courier);
-        response.assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи")).and().statusCode(SC_BAD_REQUEST);
+        response.assertThat()
+                .statusCode(SC_BAD_REQUEST)
+                .body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
     @Test
     @DisplayName("Создание курьера при пустых полях пароля и логина")
@@ -78,7 +84,9 @@ public class CreateCourierTest {
         courier.setLogin(null);
         courier.setPassword(null);
         ValidatableResponse response = courierClient.createCourier(courier);
-        response.assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи")).and().statusCode(SC_BAD_REQUEST);
+        response.assertThat()
+                .statusCode(SC_BAD_REQUEST)
+                .body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
 
 }
